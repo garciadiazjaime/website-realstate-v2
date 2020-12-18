@@ -1,4 +1,5 @@
 <script>
+  export let _id;
   export let url;
 	export let images;
 	export let price;
@@ -30,41 +31,20 @@
 	}
 </script>
 
-<a href={url} target="blank" rel="nofollow">
-  <span use:lazy data-src={images[0]}></span>
+<div data-url={url} data-id={_id}>
+  <img src={images[0]} alt="">
   <p>
     <strong>{formatter.format(price)} {currency}</strong>
   </p>
   <p class="description">{description}</p>
   <p class="address">{address}</p>
-</a>
+</div>
 
 
 <style>
-  a {
-    display: block;
+  img {
     width: 100%;
-    height: 100%;
-    max-width: 420px;
-    background: white;
-    text-decoration: none;
-    color: #3b4144;
-  }
-
-  p {
-    padding: 12px;
-  }
-
-  span {
-    display: block;
-    height: 250px;
-    background-size: cover;
-  }
-
-  .description {
-    height: 410px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    height: auto;
   }
 
   .address {
@@ -73,11 +53,5 @@
 
   strong {
     font-size: 1.4em;
-  }
-
-  @media(min-width: 420px){
-    span {
-      width: 420px;
-    }
   }
 </style>

@@ -9,7 +9,6 @@
 
 	onMount(async () => {
 		places = await getPlaces()
-		console.log(places)
 	})
 
 	const formatter = new Intl.NumberFormat('en-US', {
@@ -20,32 +19,17 @@
 </script>
 
 <style>
-	:global(body) {
-		padding: 0;
-		font-size: 18px;
-		margin: 0;
-	}
-	:global(p) {
-		margin: 0;
-	}
-
   ul {
-    background: #e8e9ea;
     list-style-type: none;
-    padding: 6px 0;
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		justify-content: space-evenly;
-  }
-
-  li {
-    padding: 6px 0;
+		border: 1px solid black;
+		margin: 0;
+		padding: 0;
   }
 </style>
 
 <svelte:head>
-	<title>Propiedades a la Venta en Tijuana, México</title>
+	<title>Venta de Casas, Departamentos en Tijuana, México</title>
+	<meta content="Venta de Casas y Deparmentos en Tijuana, México" name="description">
 </svelte:head>
 
 <ul>

@@ -9,12 +9,16 @@ function getPlacesQuery(filters = {}) {
       ${maxPrice ? `maxPrice: ${maxPrice}` : ""}
       ${keyword ? `keyword: "${keyword}"` : ""}
     ) {
+      _id
       price
       currency
       description
       images
       url
       address
+      gps {
+        coordinates
+      }
     }
   }`;
 }
