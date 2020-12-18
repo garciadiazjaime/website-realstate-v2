@@ -1,50 +1,55 @@
 <script>
+	import { onMount } from 'svelte';
 	import successkid from 'images/successkid.jpg';
+
+	import { getPlaces } from '../support/service-client'
+	import Card from '../components/Card.svelte';
+
+	let places = []
+
+	onMount(async () => {
+		places = await getPlaces()
+		console.log(places)
+	})
+
+	const formatter = new Intl.NumberFormat('en-US', {
+    style: "currency",
+    currency: 'USD',
+    minimumFractionDigits: 0
+	});
 </script>
 
 <style>
-	h1, figure, p {
-		text-align: center;
-		margin: 0 auto;
+	:global(body) {
+		padding: 0;
+		font-size: 18px;
+		margin: 0;
+	}
+	:global(p) {
+		margin: 0;
 	}
 
-	h1 {
-		font-size: 2.8em;
-		text-transform: uppercase;
-		font-weight: 700;
-		margin: 0 0 0.5em 0;
-	}
+  ul {
+    background: #e8e9ea;
+    list-style-type: none;
+    padding: 6px 0;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		justify-content: space-evenly;
+  }
 
-	figure {
-		margin: 0 0 1em 0;
-	}
-
-	img {
-		width: 100%;
-		max-width: 400px;
-		margin: 0 0 1em 0;
-	}
-
-	p {
-		margin: 1em auto;
-	}
-
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
-		}
-	}
+  li {
+    padding: 6px 0;
+  }
 </style>
 
 <svelte:head>
-	<title>Sapper project template</title>
+	<title>Propiedades a la Venta en Tijuana, México</title>
 </svelte:head>
 
-<h1>Great success!</h1>
-
-<figure>
-	<img alt="Success Kid" src="{successkid}">
-	<figcaption>Have fun with Sapper!</figcaption>
-</figure>
-
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
+<ul>
+	{#each places as place}
+		<li><Card {...place} formatter={formatter} /></li>
+	{/each}
+</ul>
