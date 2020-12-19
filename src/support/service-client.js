@@ -16,9 +16,6 @@ function getPlacesQuery(filters = {}) {
       images
       url
       address
-      gps {
-        coordinates
-      }
     }
   }`;
 }

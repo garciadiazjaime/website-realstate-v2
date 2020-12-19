@@ -8,31 +8,29 @@
   export let address;
   export let formatter
 
-  const observer = new IntersectionObserver(entries => {
-		for (let i = 0; i < entries.length; i += 1) {
-			const entry = entries[i];
-			if (entry.isIntersecting) {
-        entry.target.style.backgroundImage = `url('${entry.target.dataset.src}')`
-				observer.unobserve(entry.target);
-			}
-		}
-	}, {
-		rootMargin: '100px 0px'
-	});
+  let imgUrl = ''
 
-	function lazy(node) {
-		observer.observe(node);
-		
-		return {
-			destroy() {
-				observer.unobserve(node);
-			}	
-		}
-	}
+  let observer = new IntersectionObserver(onIntersect, {rootMargin: '200px'});
+
+  function onIntersect(entries) {
+    if (!imgUrl && entries[0].isIntersecting) {
+      imgUrl = images[0];
+    }
+  }
+
+
+  function lazyLoad(node) {
+    observer && observer.observe(node);
+    return {
+      destroy() {
+        observer && observer.unobserve(node)
+      }
+    }
+  }
 </script>
 
 <div data-url={url} data-id={_id}>
-  <img src={images[0]} alt="">
+  <img src={imgUrl} alt="" use:lazyLoad>
   <p>
     <strong>{formatter.format(price)} {currency}</strong>
   </p>
@@ -44,7 +42,7 @@
 <style>
   img {
     width: 100%;
-    height: auto;
+    height: 244px;
   }
 
   .address {

@@ -19,11 +19,13 @@
 </script>
 
 <style>
-  ul {
-    list-style-type: none;
-		border: 1px solid black;
-		margin: 0;
-		padding: 0;
+  section {
+		display: grid;
+		grid-column-gap: 20px;
+		grid-row-gap: 12px;
+		margin: 10px;
+		padding: 15px;
+		grid-template-columns: repeat( auto-fit, minmax(48%, 1fr) );
   }
 </style>
 
@@ -32,8 +34,9 @@
 	<meta content="Venta de Casas y Deparmentos en Tijuana, México" name="description">
 </svelte:head>
 
-<ul>
+<h1>Venta de Casas y Departamentos en Tijuana, México</h1>
+<section>
 	{#each places as place}
-		<li><Card {...place} formatter={formatter} /></li>
+	<Card {...place} formatter={formatter} />
 	{/each}
-</ul>
+</section>
