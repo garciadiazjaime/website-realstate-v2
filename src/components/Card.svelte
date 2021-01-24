@@ -10,7 +10,11 @@
 
   let imgUrl = ''
 
-  let observer = new IntersectionObserver(onIntersect, {rootMargin: '200px'});
+  let observer = null
+  
+  if (process.browser) {
+    observer = new IntersectionObserver(onIntersect, {rootMargin: '200px'});
+  }
 
   function onIntersect(entries) {
     if (!imgUrl && entries[0].isIntersecting) {

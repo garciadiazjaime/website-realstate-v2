@@ -1,3 +1,7 @@
+const fetch = require('node-fetch');
+
+const config = require('./config')
+
 function getPlacesQuery(filters = {}) {
   const { minPrice, maxPrice, keyword, city = 'tijuana' } = filters;
 
@@ -25,7 +29,7 @@ async function getPlaces() {
     query: getPlacesQuery()
   }
 
-  const result = await fetch('process.API_URL/graphiql', {
+  const result = await fetch(`${config.get('apiUrl')}/graphiql`, {
     method: 'POST',
     body: JSON.stringify(payload),
     headers:{
@@ -38,6 +42,6 @@ async function getPlaces() {
 }
 
 
-export {
+module.exports = {
   getPlaces
 }

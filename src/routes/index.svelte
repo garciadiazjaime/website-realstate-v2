@@ -2,20 +2,26 @@
 	import { onMount } from 'svelte';
 	import successkid from 'images/successkid.jpg';
 
-	import { getPlaces } from '../support/service-client'
 	import Card from '../components/Card.svelte';
 
-	let places = []
-
-	onMount(async () => {
-		places = await getPlaces()
-	})
+	export let places = []
 
 	const formatter = new Intl.NumberFormat('en-US', {
     style: "currency",
     currency: 'USD',
     minimumFractionDigits: 0
 	});
+</script>
+
+<script context="module">
+	export async function preload() {
+		const response = await this.fetch('./data/homepage.json')
+		const places = await response.json()
+
+		return {
+			places,
+		}
+	}
 </script>
 
 <style>
