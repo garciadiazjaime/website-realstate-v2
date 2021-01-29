@@ -36,8 +36,8 @@
 </style>
 
 <svelte:head>
-	<title>Venta de Casas, Departamentos en Tijuana, México</title>
-	<meta content="Venta de Casas y Deparmentos en Tijuana, México" name="description">
+	<title>Venta de Casas en Tijuana | Propiedades, departamentos y terrenos a la venta.</title>
+	<meta content="Casas a la venta en Tijuana. Listado de propiedades, departamentos y terrenos en venta. Oportunidades de compra." name="description">
 </svelte:head>
 
 <h1>Venta de Casas y Departamentos en Tijuana, México</h1>
@@ -46,3 +46,6 @@
 	<Card {...place} formatter={formatter} />
 	{/each}
 </section>
+
+<h2>Listado de propiedades, departamentos y terrenos en venta</h2>
+<p>Tijuana es una ciudad con gran crecimiento y desarrollo inmobiliario, en <strong>venta casa tijuana</strong> te ayudamos con la búsquedad de tu próxima propieadad.</p>

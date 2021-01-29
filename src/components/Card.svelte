@@ -34,12 +34,12 @@
 </script>
 
 <div data-url={url} data-id={_id}>
-  <img src={imgUrl} alt="" use:lazyLoad>
+  <img src={imgUrl} alt={`casa en venta tijuana`} use:lazyLoad>
   <p>
     <strong>{formatter.format(price)} {currency}</strong>
   </p>
   <p class="description">{description}</p>
-  <p class="address">{address}</p>
+  <h3 class="address">{address}</h3>
 </div>
 
 
